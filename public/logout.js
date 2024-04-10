@@ -1,4 +1,4 @@
-import { settings } from "./index.js";
+import { settings } from "./settings.js";
 
 const btnLogout = document.querySelector(["#btnLogout"])
 

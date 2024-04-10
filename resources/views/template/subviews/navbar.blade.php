@@ -8,15 +8,23 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="#">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('welcome') }}">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('profiles.index') }}">Perfis</a>
                 </li>
                 <li class="nav-item">
-                    <button class="nav-link" id="btnLogout" href="{{ route('logout') }}">Sair</button>
+                    <a class="nav-link" href="{{ route('roles.index') }}">Roles</a>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="nav-link" id="btnLogout">Sair</button>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+
+@push('scripts')
+    <script src="{{ asset('logout.js') }}" type="module"></script>
+@endpush
