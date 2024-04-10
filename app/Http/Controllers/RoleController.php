@@ -5,15 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
+use App\Repositories\RoleRepository;
+use Illuminate\Http\Request;
 
 class RoleController extends Controller
 {
+    public function __construct(private RoleRepository $repository){}
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        $list = $this->repository->list($request);
+        return view('roles.index', compact('list'));
     }
 
     /**
@@ -21,7 +25,7 @@ class RoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('roles.create');
     }
 
     /**
@@ -29,7 +33,11 @@ class RoleController extends Controller
      */
     public function store(StoreRoleRequest $request)
     {
-        //
+        $role = Role::create($request->all());
+        if ( !is_null( $role->id) ) {
+            return to_route('roles.index')->with('message', 'Cadastrado com sucesso!');
+        }
+        return to_route('roles.index')->with('message', 'Erro ao cadastrar!')->with('alert-class', 'alert-warning');
     }
 
     /**
@@ -37,7 +45,10 @@ class RoleController extends Controller
      */
     public function show(Role $role)
     {
-        //
+        if ( !is_null($role->id) ) {
+            return view('roles.show', compact('role'));
+        }
+        return to_route('roles.index')->with('message', 'Registro não encontrado!')->with('alert-class', 'alert-warning');
     }
 
     /**
@@ -45,7 +56,10 @@ class RoleController extends Controller
      */
     public function edit(Role $role)
     {
-        //
+        if ( !is_null($role->id) ) {
+            return view('roles.edit', compact('role'));
+        }
+        return to_route('roles.index')->with('message', 'Registro não encontrado!')->with('alert-class', 'alert-warning');
     }
 
     /**
@@ -53,7 +67,12 @@ class RoleController extends Controller
      */
     public function update(UpdateRoleRequest $request, Role $role)
     {
-        //
+        if ( !is_null($role->id) ) {
+            $role->name = $request->name;
+            $role->save();
+            return to_route('roles.index')->with('message', 'Atualizado com sucesso!');
+        }
+        return to_route('roles.index')->with('message', 'Registro não encontrado!')->with('alert-class', 'alert-warning');
     }
 
     /**
@@ -61,6 +80,20 @@ class RoleController extends Controller
      */
     public function destroy(Role $role)
     {
-        //
+        if ( !is_null($role->id) ) {
+            $role->delete();
+            return response()->json(['message' => 'Excluído com sucesso']);
+        }
+        return to_route('roles.index')->with('message', 'Registro não encontrado!')->with('alert-class', 'alert-warning');
+    }
+
+    public function status(Role $role)
+    {
+        if ( !is_null($role->id) ) {
+            $role->status = 1 - $role->status;
+            $role->save();
+            return response()->json(['message' => 'Atualizado com sucesso!', 'rstatus' => $role->status]);
+        }
+        return to_route('roles.index')->with('message', 'Registro não encontrado!')->with('alert-class', 'alert-warning');
     }
 }

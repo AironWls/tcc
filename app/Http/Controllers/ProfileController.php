@@ -98,4 +98,9 @@ class ProfileController extends Controller
         }
         return to_route('profiles.index')->with('message', 'Registro não encontrado!')->with('alert-class', 'alert-warning');
     }
+
+    public function destroySelected(Request $request)
+    {
+        Profile::destroy(array_values($request->id));
+    }
 }

@@ -13,6 +13,9 @@
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('profiles.index') }}">Perfis</a>
                 </li>
+                <li class="nav-item">
+                    <button class="nav-link" id="btnLogout" href="{{ route('logout') }}">Sair</button>
+                </li>
             </ul>
         </div>
     </div>

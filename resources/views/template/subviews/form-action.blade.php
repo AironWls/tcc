@@ -6,7 +6,7 @@
                 <option value="">Selecione</option>
                 <option value="r">Remover Selecionados</option>
             </select>
-            <button class="btn btn-outline-secondary rounded-0" type="button" id="button-addon2"><i
+            <button class="btn btn-outline-secondary rounded-0" type="button" id="btnAction"><i
                     class="bi bi-check"></i></button>
         </div>
 

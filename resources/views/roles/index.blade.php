@@ -42,8 +42,8 @@
                             </td>
                             <td>
                                 <div class="btn-group btn-group-sm" role="group" aria-label="Botões de ação">
-                                    <a title="Visualizar perfil" href="{{ route('profiles.show', $item->id) }}" class="btn btn-info rounded-0"><i class="bi bi-eye"></i></a>
-                                    <a title="Editar perfil" href="{{ route('profiles.edit', $item->id) }}" class="btn btn-default rounded-0"><i class="bi bi-pencil"></i></a>
+                                    <a href="{{ route('profiles.show', $item->id) }}" class="btn btn-info rounded-0"><i class="bi bi-eye"></i></a>
+                                    <a href="{{ route('profiles.edit', $item->id) }}" class="btn btn-default rounded-0"><i class="bi bi-pencil"></i></a>
                                     <button data-button-delete type="button" class="btn btn-danger rounded-0"><i class="bi bi-trash"></i></button>
                                 </div>
                             </td>
@@ -59,13 +59,12 @@
     </div>
 
     <div class="container">
-        <a href="{{ route('profiles.create' )}}" class="btn btn-sm btn-primary rounded-0" title="Adicionar perfil"><i class="bi bi-plus"></i> Adicionar</a>
+        <a href="{{ route('profiles.create' )}}" class="btn btn-sm btn-primary rounded-0"><i class="bi bi-plus"></i> Adicionar</a>
     </div>
 
     @push('scripts')
         <script src="{{ asset('checkboxToggle.js') }}"></script>
         <script src="{{ asset('delete.js') }}" type="module"></script>
         <script src="{{ asset('status.js') }}" type="module"></script>
-        <script src="{{ asset('action.js') }}" type="module"></script>
     @endpush
 @endsection
