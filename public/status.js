@@ -30,7 +30,7 @@ async function changeStatus(event) {
     } else {
         alert('Something wrong happened')
         td.innerHTML = ''
-        td.innerHTML = `<button data-button-status class="btn btn-sm btn-success" title="" aria-label=""></button>`
+        td.innerHTML = `<button data-button-status class="btn btn-sm btn-success rounded-0" title="" aria-label=""></button>`
     }
 
 }
@@ -44,5 +44,5 @@ function loadSpinner() {
 }
 
 function loadButton(response) {
-    return (response === 1) ? `<button aria-label='Ativo' title='Ativo' data-button-status class='btn btn-sm btn-success'><i class='bi bi-hand-thumbs-up'></i></button>` : `<button aria-label='Inativo' title='Inativo' data-button-status class='btn btn-sm btn-warning'><i class='bi bi-hand-thumbs-down'></i></button>`
+    return (response === 1) ? `<button aria-label='Ativo' title='Ativo' data-button-status class='btn btn-sm btn-success rounded-0'><i class='bi bi-hand-thumbs-up'></i></button>` : `<button aria-label='Inativo' title='Inativo' data-button-status class='btn btn-sm btn-warning rounded-0'><i class='bi bi-hand-thumbs-down'></i></button>`
 }

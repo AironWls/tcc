@@ -6,12 +6,12 @@
 
 <div class="container">
     <div class="card">
-        <div class="card-header">Cadastrar Perfil</div>
+        <div class="card-header">Editar Role</div>
         <div class="card-body">
-            @include('profiles.form', ['action' => route('profiles.update', $profile), 'update' => true])
+            @include('roles.form', ['action' => route('roles.update', $role), 'update' => true])
         </div>
         <div class="card-footer">
-            <a class="btn btn-sm btn-secondary rounded-0" href="{{ route('profiles.index')}}"><i class="bi bi-list"></i></a>
+            <a class="btn btn-sm btn-secondary rounded-0" href="{{ route('roles.index')}}"><i class="bi bi-list"></i></a>
         </div>
     </div>
 </div>

@@ -8,16 +8,19 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="{{ route('welcome') }}">Home</a>
+                    <a class="nav-link active" aria-current="page" href="{{ route('welcome') }}">Home <i class="bi bi-house-door"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('profiles.index') }}">Perfis</a>
+                    <a class="nav-link" href="{{ route('profiles.index') }}">Perfis <i class="bi bi-person-badge"></i></a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('roles.index') }}">Roles</a>
+                    <a class="nav-link" href="{{ route('roles.index') }}">Roles <i class="bi bi-gear"></i></a>
                 </li>
                 <li class="nav-item">
-                    <button type="button" class="nav-link" id="btnLogout">Sair</button>
+                    <a class="nav-link" href="{{ route('users.index') }}">Usuários <i class="bi bi-person"></i></a>
+                </li>
+                <li class="nav-item">
+                    <button type="button" class="nav-link" id="btnLogout">Sair <i class="bi bi-box-arrow-right"></i></button>
                 </li>
             </ul>
         </div>

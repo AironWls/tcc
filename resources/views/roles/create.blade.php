@@ -5,13 +5,13 @@
 @include('template.subviews.validations')
 
 <div class="container">
-    <div class="card">
-        <div class="card-header">Cadastrar Perfil</div>
+    <div class="card rounded-0">
+        <div class="card-header">Cadastrar Role</div>
         <div class="card-body">
-            @include('profiles.form', ['action' => route('profiles.store'), 'update' => false])
+            @include('roles.form', ['action' => route('roles.store'), 'update' => false])
         </div>
         <div class="card-footer">
-            <a class="btn btn-sm btn-secondary rounded-0" href="{{ route('profiles.index')}}"><i class="bi bi-list"></i></a>
+            <a class="btn btn-sm btn-secondary rounded-0" href="{{ route('roles.index')}}"><i class="bi bi-list"></i></a>
         </div>
     </div>
 </div>

@@ -5,7 +5,14 @@
     @endif
     <div class="mb-3">
         <label for="name" class="form-label">Nome</label>
-        <input type="text" name="name" id="name" class="form-control form-control-sm rounded-0" value="{{ old('name') ?? $profile->name ?? ''}}" placeholder="Nome do perfil" required autofocus>
+        <select name="name[]" id="name" class="form-select form-select-sm rounded-0" multiple>
+            <option value="">Selecione</option>
+            @foreach($routeCollection as $route)
+                @if ( !is_null($route->getName()) )
+                    <option value="{{ $route->getName() }}">{{ $route->getName() }}</option>
+                @endif
+            @endforeach
+        </select>
     </div>
     <button class="btn btn-sm btn-primary rounded-0"><i class="bi bi-plus"></i> Salvar</button>
 </form>

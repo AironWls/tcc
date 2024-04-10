@@ -6,9 +6,9 @@
 
 <div class="container">
     <div class="card">
-        <div class="card-header">Editar Perfil</div>
+        <div class="card-header">Cadastrar Perfil</div>
         <div class="card-body">
-            @include('profiles.form', ['action' => route('profiles.update', $profile), 'update' => true])
+            @include('profiles.form', ['action' => route('profiles.store'), 'update' => false])
         </div>
         <div class="card-footer">
             <a class="btn btn-sm btn-secondary rounded-0" href="{{ route('profiles.index')}}"><i class="bi bi-list"></i></a>

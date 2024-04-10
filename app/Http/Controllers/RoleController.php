@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Role;
 use App\Http\Requests\StoreRoleRequest;
 use App\Http\Requests\UpdateRoleRequest;
+use Illuminate\Support\Facades\Route;
 use App\Repositories\RoleRepository;
 use Illuminate\Http\Request;
 
@@ -25,7 +26,8 @@ class RoleController extends Controller
      */
     public function create()
     {
-        return view('roles.create');
+        $routeCollection = Route::getRoutes();
+        return view('roles.create', compact('routeCollection'));
     }
 
     /**
@@ -33,9 +35,9 @@ class RoleController extends Controller
      */
     public function store(StoreRoleRequest $request)
     {
-        $role = Role::create($request->all());
-        if ( !is_null( $role->id) ) {
-            return to_route('roles.index')->with('message', 'Cadastrado com sucesso!');
+        $result = $this->repository->store($request);
+        if ( $result ) {
+            return to_route('roles.index')->with('message', 'Salvo com sucesso!');
         }
         return to_route('roles.index')->with('message', 'Erro ao cadastrar!')->with('alert-class', 'alert-warning');
     }
@@ -57,7 +59,8 @@ class RoleController extends Controller
     public function edit(Role $role)
     {
         if ( !is_null($role->id) ) {
-            return view('roles.edit', compact('role'));
+            $routeCollection = Route::getRoutes();
+            return view('roles.edit', compact('role', 'routeCollection'));
         }
         return to_route('roles.index')->with('message', 'Registro não encontrado!')->with('alert-class', 'alert-warning');
     }
@@ -95,5 +98,10 @@ class RoleController extends Controller
             return response()->json(['message' => 'Atualizado com sucesso!', 'rstatus' => $role->status]);
         }
         return to_route('roles.index')->with('message', 'Registro não encontrado!')->with('alert-class', 'alert-warning');
+    }
+
+    public function destroySelected(Request $request)
+    {
+        Role::destroy(array_values($request->id));
     }
 }
